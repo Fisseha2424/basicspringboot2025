@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+</head>
+<body>
+this is the index <br>
+/index to access it
+
+<script>
+    $.ajax({
+        url:"/api/test1",
+        method:"GET",
+        data: {
+            param_1:"thsi is parameter 1",
+            param_2:"this is parameter 2"
+        },
+        success: (data,status,xhr)=>{
+            alert(JSON.stringify(data));
+        },
+        error: (data,status,xhr)=>{
+            alert(JSON.stringify(data));
+        },
+
+    });
+</script>
+</body>
+</html>
