@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Board</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+</head>
+<body>
+-------------------DETAIL-------------------------<br>
+ID:  
+<input type="number"id="id"><br>
+Title:
+<input type="text" id="title"><br>
+content
+<input type="text" id="content"><br>
+Author:
+<input type="text" id="author">
+
+<button onclick="detail_board()">Detail</button><br>
+<button onclick="update_board()">Update</button><br>
+<button onclick="delete_board()">Delete</button><br>
+
+
+<script>
+function detail_board(){
+    $.ajax({
+        url:"/api/board/detail",
+        method:"GET",
+        data: {
+            id:$("#id").val()
+
+        },
+        success: (data,status,xhr)=>{
+            // alert(JSON.stringify(data));
+            $("#title").val(data.title);
+            $("#content").val(data["content"]);
+            $("#author").val(data["author"]);
+        },
+        error: (data,status,xhr)=>{
+            alert(JSON.stringify(data));
+        },
+
+    });
+       
+}
+
+function update_board(){
+    $.ajax({
+        url:"/api/board/update",
+        method:"GET",
+        data: {
+            id:$("#id").val(),
+            title:$("#title").val(),
+            content:$("#content").val(),
+            author:$("#author").val()
+
+        },
+        success: (data,status,xhr)=>{
+            alert(JSON.stringify(data));
+        },
+        error: (data,status,xhr)=>{
+            alert(JSON.stringify(data));
+        },
+
+    });
+       
+}
+
+
+
+function delete_board(){
+    $.ajax({
+        url:"/api/board/delete",
+        method:"GET",
+        data: {
+            id:$("#id").val()
+
+        },
+        success: (data,status,xhr)=>{
+            alert(JSON.stringify(data));
+        },
+        error: (data,status,xhr)=>{
+            alert(JSON.stringify(data));
+        },
+
+    });
+       
+}
+</script>
+    
+</body>
+</html>
